@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import cartItems from "../../cartItems";
 
 //買い物かごの初期化
 const initialState = {
-  cartItems: [],
+  cartItems: cartItems,
   amount: 4,
   total: 0,
 };
@@ -11,7 +12,17 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart", //useSelectorで呼び出す
   initialState, //state
-  reducers: {}, //reducer
+  reducers: {
+    //clearCart:Action名
+    clearCart: (state) => {
+      // state.cartItems = [];
+      // state.amount = 0;
+      // state.total = 0;
+      return { cartItems: [], amount: 0, total: 0 };
+    },
+  },
 });
+// console.log(cartSlice);
 
+export const { clearCart } = cartSlice.actions; //console.log(cartSlice)参照
 export default cartSlice.reducer;
