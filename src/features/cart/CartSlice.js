@@ -13,7 +13,6 @@ const cartSlice = createSlice({
   name: "cart", //useSelectorで呼び出す
   initialState, //state
   reducers: {
-
     //clearCart:Action名
     clearCart: (state) => {
       // state.cartItems = [];
@@ -41,9 +40,21 @@ const cartSlice = createSlice({
       );
       cartItem.amount = cartItem.amount - 1;
     },
+
+    calculateTotals: (state) => {
+      let amount = 0;
+      let total = 0;
+      state.cartItems.forEach((item) => {
+        amount += item.amount;
+        total += item.amount * item.price;
+      });
+      state.amount = amount;
+      state.total = total;
+    },
   },
 });
 // console.log(cartSlice);
 
-export const { clearCart, removeItem, increase, decrease } = cartSlice.actions; //console.log(cartSlice)参照
+export const { clearCart, removeItem, increase, decrease, calculateTotals } =
+  cartSlice.actions; //console.log(cartSlice)参照
 export default cartSlice.reducer;
