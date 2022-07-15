@@ -24,7 +24,7 @@ const CartContainer = () => {
       </header>
       <div>
         {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} />
+          <CartItem key={cartItem.id} {...cartItem} /> //スプレッド構文で全て展開 title={cartItem.title}を省く
         ))}
       </div>
       <footer>
