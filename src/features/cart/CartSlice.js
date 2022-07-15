@@ -15,9 +15,12 @@ const cartSlice = createSlice({
   reducers: {
     //clearCart:Action名
     clearCart: (state) => {
-      state.cartItems = [];
+      // state.cartItems = [];
+      // state.amount = 0;
+      // state.total = 0;
+      return { cartItems: [], amount: 0, total: 0 };
     },
-  }, //reducer
+  },
 });
 // console.log(cartSlice);
 
